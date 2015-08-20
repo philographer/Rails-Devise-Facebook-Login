@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Tobob/bobparty_write</title>
+    <%= stylesheet_link_tag "report_write" %>
+    <script>
+        function eraseText() 
+        {
+            document.getElementById("output").value = "";
+        }
+        $(".user").focusin(function(){
+          $(".inputUserIcon").css("color", "#e74c3c");
+        }).focusout(function(){
+          $(".inputUserIcon").css("color", "white");
+        });
+        
+        $(".pass").focusin(function(){
+          $(".inputPassIcon").css("color", "#e74c3c");
+        }).focusout(function(){
+          $(".inputPassIcon").css("color", "white");
+        });
+        
+        function updateTextInput(val) {
+          document.getElementById('textInput').value="최대: "+val+"명"; 
+        }
+    </script>
+  </head>
+  <body>
+    <div id="main-content">
+        <%= form_tag("/main/bobparty_write_create", method: "post") do %>
+              <h2 style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square"></i> Make Party</h2>
+              <div align="center">
+                      <input type="text" placeholder="Enter title Here" name="bobparty_title">
+                      <textarea name="bobparty_comment" placeholder="Enter context here" id="output" class="inputUserIcon" style="position:static"></textarea>
+                      <input type="date" name="bobparty_date" >
+                      <input type="time" name="bobparty_time" >
+                      <input type="text" id="textInput" value="최대: N명" readonly>
+                      <input type="range" name="bobparty_member_maxnum" min="2" max="4" style="width:80%" onchange="updateTextInput(this.value);">
+                      <input type='submit' value='Submit' name='submit' style="width:30%" class="submit">
+                      <input type='reset' value="reset" name='reset' onclick="javascript:eraseText();" style="width:30%" class="erase">
+                </div>
+        <% end %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "todays_meal" %>
+
+<%= @school_restaurant %> <br/>
+<%= @school_today_date %>
+<div class="container" style="align:center;">
+<table border="1" style="align:center;">        
+		<tbody>
+			<tr>            
+				<th>중식</th>
+				
+				<td class="left">
+					<%= @school_launch_menu %>
+				</td>
+				
+			
+			</tr>
+			
+         	<tr>
+			    <th >석식</th>
+			    <td class="left">
+			        <%= @school_dinner_menu %>
+			    </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+

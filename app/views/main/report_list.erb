@@ -1,0 +1,51 @@
+      <head>
+        <%= stylesheet_link_tag "report_list" %>
+      </head>
+    <div class="container">
+    <div class="table-responsive">
+      <div class="table-container">
+      <table class="table" class="center-table" style="text-align:center;" align="center">
+        <tr style="border-style: hidden;">
+          <td>
+           글번호
+          </td>
+          <td>
+           글제목
+          </td>
+          <td>
+           글쓴이
+          </td>
+          <td width="100px">
+            비 고
+          </td>
+        </tr>
+        <% @reports.reverse_each do |x| %>
+          <tr style="border-style: hidden;">
+              <td>
+              <%= x.id %>
+              </td>
+              <td>
+                 <a href="/main/report_read?id=<%=x.id%>" class="title_color" >
+                <%= x.report_title %>
+                 </a>
+              </td>
+              <td>
+               <%= x.report_username %>
+              </td>
+              <td width="30px">
+                <% if x.report_email == current_user.email %>
+                    <%= form_tag("/main/report_delete_execute/"+x.id.to_s, method: "post") do %>
+                         <button class="button">삭제</button>
+                    <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      
+      <form style="display: inline" action="/main/report_write" method="get">
+        <button class="button">글쓰기</button>
+      </form>
+      </div>
+    </div>
+    </div>

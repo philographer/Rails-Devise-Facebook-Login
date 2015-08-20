@@ -1,0 +1,258 @@
+<head>
+  <%= stylesheet_link_tag "index" %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+  <!-- Smooth Scroll -->
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+ $('a[href^=#]').on('click', function(e){ var href = $(this).attr('href');
+ $('html, body').animate({ scrollTop:($(href).offset().top - 140) },'slow'); e.preventDefault(); });
+});
+
+/*-----------------FACEBOOK JAVASCRIPT-----------------*/
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1474702336180512',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+/*-----------------END OF FACEBOOK JAVA SCRIPT-----------------*/
+  </script>
+</head>
+<!-- FACE BOOK TOP -->
+<body>
+
+
+
+<!--errmsg-->
+
+
+<%= render partial: "shared/flash_messages", flash: flash %>
+
+<!-- -->
+<!-- navbar 시작 -->
+ <div class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid" style="height:100%">
+        <div class="navbar-header" style="height:100px">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand brand" href="/">
+                <div class="logo"></div>
+                <span class="logo-text">ToBoB</span>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="top_nav" style="vertical-align:middle;">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <% if user_signed_in? %>
+                        <a href="<%= edit_user_registration_path %>" style="align:right;">
+                          <%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:center;') if current_user.image %>
+                          <%= current_user.name %>
+                        </a>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %>
+                </li>
+                <li>
+                <%= link_to "Report list", "/main/report_list" %>
+                </li>
+                <li>
+                <%= link_to "Report write", "/main/report_write" %>
+                </li>
+                <li>
+                <%= link_to "Todays meal", "/main/todays_meal" %>
+                </li>
+                <li>
+                <%= link_to "Bobparty create", "/main/bobparty_write" %>
+                </li>
+                <li><a href="/">Home</a></li>
+                <!-- 드랍다운
+                <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a>Item 1</a></li>
+                        <li><a>Item 2</a></li>
+                    </ul>
+                </li>
+                -->
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!-- navbar 끝 -->
+
+	<div class="header" >
+		<h1>
+            Dining_mate
+		</h1>
+	</div>
+	<div class="container">
+
+	    <!-- ======================================== 밥파티목록 테이블 시작 ============================= -->
+
+	<h2 id="design">Party</h2>
+        <p> </p>
+
+	<div class="table-container">
+      <table class="table" class="center-table" style="text-align:center;" align="center">
+        <tr style="border-style: hidden;">
+          <td>
+           글번호
+          </td>
+          <td>
+           글제목
+          </td>
+          <td>
+           모이는 시간
+          </td>
+          <td>
+           현재인원
+          </td>
+          <td>
+           최대인원
+          </td>
+          <td width="100px">
+            비 고
+          </td>
+        </tr>
+        <% @bobparties.reverse_each do |x| %>
+        <tr style="border-style: hidden;">
+              <td>
+              <%= x.id %>
+              </td>
+              <td>
+                 <a href="/main/bobparty_read?id=<%=x.id%>" class="title_color" >
+                <%= x.bobparty_title %>
+                 </a>
+              </td>
+              <td>
+                <%= x.bobparty_date + " " +x.bobparty_time %>
+              </td>
+              <td>
+               <%= x.bobparty_member_nownum %>
+              </td>
+              <td>
+               <%= x.bobparty_member_maxnum %>
+              </td>
+              <td width="30px">
+                <% if x.bobparty_firstmember_email == current_user.email %>
+                    <%= form_tag("/main/bobparty_delete_execute/"+x.id.to_s, method: "post", data: {confirm: "Reaaly?"}) do %>
+                         <button class="button">삭제</button>
+                    <% end %>
+                <% end %>
+              </td>
+          </tr>
+          <% end %>
+        </table>
+
+      <form style="display: inline" action="/main/bobparty_write" method="get">
+        <button class="button">밥파티 만들기</button>
+      </form>
+    </div>
+      <!-- 밥파티 목록 끝 -->
+
+	</div> <!-- end container -->
+
+	<!-- 사이드바 시작 -->
+ 	<div id="menu-icon" class="menu-icon" style="align:center;"></div>
+	<div class="shownav" onmouseover="document.getElementById('navbar').className='navbar1';document.getElementById('menu-icon').className='menu-icon1'" onmousemove="document.getElementById('hidenav').className='hidenav1'">&nbsp;</div>
+	<div id="hidenav" class="hidenav0" onmouseover="document.getElementById('navbar').className='navbar0';document.getElementById('menu-icon').className='menu-icon'" onmousemove="document.getElementById('hidenav').className='hidenav0'">&nbsp;</div>
+	<div id="navbar" class="navbar0"> <!-- navbar -->
+		<div class="navbar-inner">
+			<a class="nav-item one" href="#design">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/design-icon.png" alt="Design-Icon"/>
+				<p color="white">Design</p>
+			</a>
+			<a class="nav-item two" href="#development">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/development-icon.png" alt="Development-Icon"/>
+				<p color="white">Development</p>
+			</a>
+			<a div class="nav-item three" href="#support">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/support-icon.png" alt="Support-Icon"/>
+				<p color="white">Support</p>
+			</a>
+			<a class="nav-item four" href="#portfolio">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/portfolio-icon.png" alt="Portfolio-Icon"/>
+				<p color="white">Portfolio</p>
+			</a>
+			<a class="nav-item five" href="#contact">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/contact2-icon.png" alt="Contact-Icon"/>
+				<p color="white">Contact </p>
+			</a>
+		</div> <!-- end navbar-inner -->
+	</div> <!-- end navbar -->
+
+
+<!--=============================사이드바 끝========================================================-->
+</body>
+
+<footer class="footer-distributed">
+			<div class="footer-left">
+				<h3>Company<span>logo</span></h3>
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">Blog</a>
+					·
+					<a href="#">Pricing</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="/main/write_report">Faq</a>
+					·
+					<a href="#">Contact</a>
+				</p>
+				<p class="footer-company-name">Company Name &copy; 2015</p>
+			</div>
+			<div class="footer-center">
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>21 Revolution Street</span> Paris, France</p>
+				</div>
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+1 555 123456</p>
+				</div>
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:support@company.com">support@company.com</a></p>
+				</div>
+		 	</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>About the company</span>
+					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+				</p>
+				<div class="footer-icons">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+				</div>
+			</div>
+		<a id="contact"></a>
+		</footer>
+
+
+<!-- Footer에 넣을 페이스북! -->
+<!--
+                <div
+                  class="fb-like"
+                  data-share="true"
+                  data-width="450"
+                  data-show-faces="true"
+                  style="">
+                </div> -->

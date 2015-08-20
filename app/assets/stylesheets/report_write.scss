@@ -1,0 +1,157 @@
+       @import url(http://weloveiconfonts.com/api/?family=entypo);
+       @import url(https://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+        body{
+          /*
+            background: url("http://wallpapers1.hellowallpaper.com/art_black-background-widescreen--04_05-1920x1200.jpg") no-repeat center center fixed; 
+          	-webkit-background-size: cover;
+          	-moz-background-size: cover;
+          	-o-background-size: cover;
+          	background-size: cover;
+          	*/
+            font-family: 'Nanum Pen Script', sans-serif;
+            font-size:200%;
+            background: #272125;
+            }
+          .top-button{
+            outline: 0;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: top;
+            height: 52px;
+            line-height: 1.87;
+            margin: 5px 0;
+            padding: 12px 18px;
+            position: relative;
+          }
+          .main-header{
+            height: 42px;
+            position: relative;
+            z-index: 6000;
+            background: -webkit-gradient(linear, left top, left bottom, from(#111), to(#222));
+            background: -webkit-linear-gradient(#111, #222);
+            background: linear-gradient(#111, #222);
+          }
+          ::-webkit-input-placeholder { /* WebKit browsers */
+                color:    #ffffff;
+            }
+            :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+               color:    #ffffff;
+               opacity:  1;
+            }
+            ::-moz-placeholder { /* Mozilla Firefox 19+ */
+               color:    #ffffff;
+               opacity:  1;
+            }
+            :-ms-input-placeholder { /* Internet Explorer 10+ */
+               color:    #ffffff;
+            }
+          
+       
+      /* zocial */
+      [class*="entypo-"]:before {
+        font-family: 'entypo', sans-serif;
+      }
+      
+      *,
+      *:before,
+      *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box; 
+      }
+      
+      
+      h2 {
+        color:rgba(255,255,255,.8);
+        margin-left:12px;
+      }
+      
+      form {
+        position:relative;
+        margin: 50px auto;
+        width: 380px;
+        height: auto;
+      }
+      
+      input {
+        padding: 16px;
+        border-radius:7px;
+        border:0px;
+        background: rgba(255,255,255,.2);
+        margin: 15px;
+        width: 300px;  
+        color:white;
+        font-size:18px;
+        height: 54px;
+      }
+      textarea{
+        padding: 16px;
+        border-radius:7px;
+        border:0px;
+        background: rgba(255,255,255,.2);
+        margin: 15px;
+        width: 300px;  
+        color: white;
+        font-size:18px;
+        height: 100px;
+        display: block;
+      }
+      
+      input:focus,{
+        outline-color: rgba(0,0,0,0);
+        background: rgba(255,255,255,.95);
+        color: #e74c3c;
+      }
+      
+      button {
+        float:right;
+        height: 121px;
+        width: 50px;
+        border: 0px;
+        background: #e74c3c;
+        border-radius:7px;
+        padding: 10px;
+        color:white;
+        font-size:22px;
+      }
+      
+      
+      .submit{
+          background:#e74c3c;
+      }
+      .erase{
+          background:#e74c3c;
+      }
+      
+      .inputUserIcon {
+        position:absolute;
+        top:68px;
+        right: 80px;
+        color:white;
+      }
+      
+      .inputPassIcon {
+        position:absolute;
+        top:136px;
+        right: 80px;
+        color:white;
+      }
+      
+      textarea::-webkit-input-placeholder, input::-webkit-input-placeholder { 
+        color: white;
+      }
+    
+      input:focus::-webkit-input-placeholder  { 
+        outline-color: rgba(255,255,255,255);
+        color: #e74c3c;
+      }
+      
+      textarea:focus::-webkit-input-placeholder  { 
+        outline-color: rgba(0,0,0,0);
+        color: #e74c3c;
+      }
+      
+      textarea:focus{
+          background: #ffffff;
+          color: #e74c3c;
+      }

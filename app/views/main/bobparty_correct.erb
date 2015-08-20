@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Report_read</title>
+    <%= stylesheet_link_tag "report_read" %>
+    <script>
+        function eraseText() 
+        {
+            document.getElementById("output").value = "";
+        }
+        $(".user").focusin(function(){
+          $(".inputUserIcon").css("color", "#e74c3c");
+        }).focusout(function(){
+          $(".inputUserIcon").css("color", "white");
+        });
+        
+        $(".pass").focusin(function(){
+          $(".inputPassIcon").css("color", "#e74c3c");
+        }).focusout(function(){
+          $(".inputPassIcon").css("color", "white");
+        });
+        
+        function updateTextInput(val) {
+          document.getElementById('textInput').value="최대: "+val+"명"; 
+        }
+    </script>
+  </head>
+  <body>
+    <div id="main-content">
+            <%= form_tag("/main/bobparty_correct_execute", method: "post") do %>
+              <h2 style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square"></i> Correct Article</h2>
+              <div align="center">
+                      <input type="text" name="bobparty_title" value="<%= @bobparty.bobparty_title %>">
+                      <input type="text" name="bobparty_firstmember_name" value="<%= @bobparty.bobparty_firstmember_name %>" readonly>
+                      <textarea name="bobparty_comment"  id="output" class="inputUserIcon" style="position:static" ><%= @bobparty.bobparty_comment %></textarea>
+                      <input type="hidden" name="bobparty_firstmember_email" value="<%= current_user.email %>">
+                      <input type="hidden" name="id" value="<%= params[:id] %>">
+                      <input type="date" name="bobparty_date" value="<%= @bobparty.bobparty_date%>" >
+                      <input type="time" name="bobparty_time" value="<%= @bobparty.bobparty_time %>">
+                      <input type="text" id="textInput" value="<%= @bobparty.bobparty_member_maxnum %>" readonly>
+                      <input type="range" name="bobparty_member_maxnum" min="2" max="4" style="width:80%" onchange="updateTextInput(this.value);">
+
+                      <% if @bobparty.bobparty_firstmember_email == current_user.email %>
+                          <input type='submit' value='Correct' name='submit' style="width:30%" class="submit">
+                      <% end %>
+                      <input type="button" class="button" onclick="history.back(-1);" style="width:30%" value="Back"/>
+            <% end %>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+    </div>
+  </body>
+</html>

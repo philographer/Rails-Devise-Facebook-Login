@@ -1,0 +1,204 @@
+
+    
+    <head>
+    	<script type="text/javascript">
+    	function addCellHeader(table) {
+			if (!table) {
+				return false;
+			}
+		
+			var trs = table.getElementsByTagName('tr');
+			var trsChild;
+			var grid = {};
+			var cells;
+			for (var i = 0, cntI = trs.length; i < cntI; i++) {
+				if (!grid[i]) {
+					grid[i] = {};
+				}
+				trsChild = trs.item(i).childNodes;
+				cells = 0;
+				for (var j = 0, cntJ = trsChild.length; j < cntJ; j++) {
+					if (trsChild[j].nodeType == 1) {
+						grid[i][cells++] = trsChild[j];
+					}
+				}
+			}   
+			var cellHeader = '';
+			for (row in grid) {
+				if (row == 0) {
+					continue;
+				}
+				for (cell in grid[row]) {
+		cellHeader =  grid[0][cell].innerHTML;
+					grid[row][cell].setAttribute('data-cell-header', cellHeader);
+				}
+			}
+		}
+		addCellHeader(document.querySelector('.afternoon-session'));
+		</script>
+    </head>
+    <%= stylesheet_link_tag "todays_meal" %>
+<%= @school_restaurant %> <br/>
+<%= @school_today_date %>
+<div class="container" style="align:center;">
+<table border="1" style="align:center;">        
+		<tbody>
+			<tr>            
+				<th rowspan="2">조식<br />
+				(08:30~09:30)</th>
+				<th class="fixwidth">소반</th>
+				<td class="left">
+					<%= @school_morning_soban_menu %>
+				</td>
+				<td>
+					<%= @school_morning_soban_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">스낵</th>
+				<td class="left">
+					<%= @school_morning_snack_menu %>
+				</td>
+				<td>
+					<%= @school_morning_snack_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th rowspan="5" class="fixwidth">중식<br />
+				(11:00~14:00)</th>
+				<th>뚝배기</th>
+				<td class="left">
+					<%= @school_lunch_ddukbaegi_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_ddukbaegi_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">명가</th>
+				<td class="left">
+					<%= @school_lunch_myungga_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_myungga_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">누들</th>
+				<td class="left">
+					<%= @school_lunch_nuddle_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_nuddle_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">소반</th>
+				<td class="left">
+					<%= @school_lunch_soban_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_soban_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">돈까스</th>
+				<td class="left">
+					<%= @school_lunch_dongas_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_dongas_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th colspan="2" class="fixwidth">Casual / dining<br />
+				(12:00~14:00)</th>
+				<td class="left">
+					<%= @school_lunch_casual_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_casual_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th colspan="2" class="fixwidth">스낵 1<br />
+				(13:00~18:00)</th>
+				<td class="left">
+					<%= @school_lunch_snack1_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_snack1_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th colspan="2" class="fixwidth">스낵 2<br />
+				(14:00~18:00)</th>
+				<td class="left">
+					<%= @school_lunch_snack2_menu %>
+				</td>
+				<td>
+					<%= @school_lunch_snack2_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th rowspan="3" class="fixwidth">석식<br />
+				(16:30~19:00)</th>
+				<th>뚝배기</th>
+				<td class="left">
+					<%= @school_dinner_ddukbaegi_menu %>
+				</td>
+				<td>
+					<%= @school_dinner_ddukbaegi_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">명가</th>
+				<td class="left">
+					<%= @school_dinner_myungga_menu %>
+				</td>
+				<td>
+					<%= @school_dinner_myungga_price %>
+				</td>
+			</tr>
+			<tr>            
+				<th class="fixwidth">소반</th>
+				<td class="left">
+					<%= @school_dinner_soban_menu %>
+				</td>
+				<td>
+					<%= @school_dinner_soban_price %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<br>
+
+<%= stylesheet_link_tag "todays_meal" %>
+
+<%= @school_restaurant2 %> <br/>
+<%= @school_today_date2 %>
+<div class="container" style="align:center;">
+<table border="1" style="align:center;">        
+		<tbody>
+			<tr>            
+				<th>중식</th>
+				
+				<td class="left">
+					<%= @school_launch_menu %>
+				</td>
+				
+			
+			</tr>
+			
+         	<tr>
+			    <th >석식</th>
+			    <td class="left">
+			        <%= @school_dinner_menu %>
+			    </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<br>
+<br>

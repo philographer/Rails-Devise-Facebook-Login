@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Report_read</title>
+    <%= stylesheet_link_tag "report_read" %>
+    <script>
+        function eraseText() 
+        {
+            document.getElementById("output").value = "";
+        }
+        $(".user").focusin(function(){
+          $(".inputUserIcon").css("color", "#e74c3c");
+        }).focusout(function(){
+          $(".inputUserIcon").css("color", "white");
+        });
+        
+        $(".pass").focusin(function(){
+          $(".inputPassIcon").css("color", "#e74c3c");
+        }).focusout(function(){
+          $(".inputPassIcon").css("color", "white");
+        });
+    </script>
+  </head>
+  <body>
+    
+    
+    
+    <div id="main-content">
+      <div align="center">
+          <% if @right_time == false %>
+            <%= form_tag("/main/bobparty_correct_or_participation", method: "post") do %>
+              <h2 style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square"></i> Read Article</h2>
+                      <input type="text" name="bobparty_title" value="<%= @one_bobparty.bobparty_title %>" readonly>
+                      <input type="text" name="bobparty_firstmember_email" value="<%= @one_bobparty.bobparty_firstmember_name %>" readonly>
+                      <textarea name="bobparty_comment"  id="output" class="inputUserIcon" style="position:static" readonly><%= @one_bobparty.bobparty_comment %></textarea>
+                      <textarea name="bobparty_nowstate" class="inputUserIcon" style="position:static" readonly> 
+                      <% if @one_bobparty.bobparty_firstmember_name != nil %>
+                      <%= @one_bobparty.bobparty_firstmember_name %>
+                      <% end %>
+                      <% if @one_bobparty.bobparty_secondmember_name != nil %>
+                      <%= @one_bobparty.bobparty_secondmember_name %>
+                      <% end %>
+                      <% if @one_bobparty.bobparty_thirdmember_name != nil %>
+                      <%= @one_bobparty.bobparty_thirdmember_name %>
+                      <% end %>
+                      <% if @one_bobparty.bobparty_forthmember_name != nil %>
+                      <%= @one_bobparty.bobparty_forthmember_name %>
+                      <% end %>
+                      </textarea>
+                      <input type="hidden" name="bobparty_username" value="<%= current_user.name %>">
+                      <input type="hidden" name="id" value="<%= params[:id] %>">  
+                      <% if @one_bobparty.bobparty_firstmember_email == current_user.email %>
+                          <input type='submit' value='Correct' name='submit' style="width:30%" class="submit">
+                      <% else %>
+                          <input type='submit' value='participation' name='submit' style="width:30%" class="submit">
+                      <% end %>
+                      <input type="button" class="button" onclick="location.href='/';" style="width:30%" value="List"/>
+            <% end %>
+          <% else %>
+                        <!-- 채팅방 달기이이이  -->
+                     <script id="talklink_function" src="http://talklink.link/plugin-blog-all.js" talklink_keyword="hello" talklink_align="right"></script>
+          <% end %>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+    </div>
+  </body>
+</html>

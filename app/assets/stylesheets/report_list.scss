@@ -1,0 +1,87 @@
+       @import url(http://weloveiconfonts.com/api/?family=entypo);
+       @import url(http://fonts.googleapis.com/css?family=Roboto);
+        body{
+          /*
+            background: url("http://wallpapers1.hellowallpaper.com/art_black-background-widescreen--04_05-1920x1200.jpg") no-repeat center center fixed; 
+          	-webkit-background-size: cover;
+          	-moz-background-size: cover;
+          	-o-background-size: cover;
+          	background-size: cover;
+          	*/
+          	font-family: 'Nanum Pen Script', sans-serif;
+            font-size:300%;
+            background: #272125;
+            }
+          .top-button{
+            outline: 0;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: top;
+            height: 52px;
+            line-height: 1.87;
+            margin: 5px 0;
+            padding: 12px 18px;
+            position: relative;
+          }
+          .main-header{
+            height: 42px;
+            position: relative;
+            z-index: 6000;
+            background: -webkit-gradient(linear, left top, left bottom, from(#111), to(#222));
+            background: -webkit-linear-gradient(#111, #222);
+            background: linear-gradient(#111, #222);
+          }
+          
+      .button{
+        float:right;
+        width: 100px;
+        border: 0px;
+        background: #e74c3c;
+        border-radius:7px;
+        padding: 10px;
+        color:white;
+        font-size:22px;
+      }
+      .button_to
+      {
+        float:right;
+        width: 120px;
+        border: 0px;
+        background: black;
+        border-radius:7px;
+        padding: 10px;
+        color:white;
+        font-size:22px;
+      }
+      input
+      {
+         text-align:center;
+         background: black;
+         border:none;
+         width:100px;
+         color:red;
+      }
+      
+      .main-content{
+        
+      }
+      .table-container{
+        width:600px;
+        color:#ffffff;
+        margin-right:auto;
+        margin-left:auto;
+        
+      }
+      .center-table
+        {
+          margin: 0 auto !important;
+          float: none !important;
+        }
+       
+       tr:hover {
+          background-color: #000000;
+        }
+      a:hover{
+        color:#ffffff;
+        text-decoration: none;
+      }
