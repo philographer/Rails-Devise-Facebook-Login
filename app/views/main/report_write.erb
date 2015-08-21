@@ -5,7 +5,7 @@
     <title>Tobob/Write_report</title>
     <%= stylesheet_link_tag "report_write" %>
     <script>
-        function eraseText() 
+        function eraseText()
         {
             document.getElementById("output").value = "";
         }
@@ -14,7 +14,7 @@
         }).focusout(function(){
           $(".inputUserIcon").css("color", "white");
         });
-        
+
         $(".pass").focusin(function(){
           $(".inputPassIcon").css("color", "#e74c3c");
         }).focusout(function(){
@@ -24,8 +24,8 @@
   </head>
   <body>
     <div id="main-content">
-        
-        
+
+
         <%= form_tag("/main/report_write_create", method: "post", multipart: true) do %>
               <h2 style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square"></i> Write Report</h2>
               <div align="center">

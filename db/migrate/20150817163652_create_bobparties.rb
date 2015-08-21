@@ -16,7 +16,7 @@ class CreateBobparties < ActiveRecord::Migration
         t.string  :bobparty_forthmember_email                                    #밥파티 네번째 멤버
         t.string  :bobparty_date                                                 #밥파티 언제 만날지(날짜))
         t.string  :bobparty_time                                                #밥파티 언제 만날지(시간)
-        #15분전 시간 있어야하지 않나 ;; 
+        #15분전 시간 있어야하지 않나 ;;
       t.timestamps null: false
     end
   end

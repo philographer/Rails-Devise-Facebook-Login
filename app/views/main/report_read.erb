@@ -5,7 +5,7 @@
     <title>Report_read</title>
     <%= stylesheet_link_tag "report_read" %>
     <script>
-        function eraseText() 
+        function eraseText()
         {
             document.getElementById("output").value = "";
         }
@@ -14,7 +14,7 @@
         }).focusout(function(){
           $(".inputUserIcon").css("color", "white");
         });
-        
+
         $(".pass").focusin(function(){
           $(".inputPassIcon").css("color", "#e74c3c");
         }).focusout(function(){
@@ -24,7 +24,7 @@
   </head>
   <body>
     <header class="main-header">
-    <div id="fixed-menu">   
+    <div id="fixed-menu">
       <nav class="navbar navbar-default">
           <div class="container-fluid" style="background-color:#282828;">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -58,7 +58,7 @@
               <h2 style="color:white">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square"></i> Read Article</h2>
               <div align="center">
                       <input type="text" name="report_title" value="<%= @one_report.report_title %>" readonly>
-                      
+
                           <!--
                           <input type="text" placeholder="Enter Text Here" name="report_title">
                           -->

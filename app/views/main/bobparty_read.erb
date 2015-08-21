@@ -5,7 +5,7 @@
     <title>Report_read</title>
     <%= stylesheet_link_tag "report_read" %>
     <script>
-        function eraseText() 
+        function eraseText()
         {
             document.getElementById("output").value = "";
         }
@@ -14,7 +14,7 @@
         }).focusout(function(){
           $(".inputUserIcon").css("color", "white");
         });
-        
+
         $(".pass").focusin(function(){
           $(".inputPassIcon").css("color", "#e74c3c");
         }).focusout(function(){
@@ -23,9 +23,9 @@
     </script>
   </head>
   <body>
-    
-    
-    
+
+
+
     <div id="main-content">
       <div align="center">
           <% if @right_time == false %>
@@ -34,7 +34,7 @@
                       <input type="text" name="bobparty_title" value="<%= @one_bobparty.bobparty_title %>" readonly>
                       <input type="text" name="bobparty_firstmember_email" value="<%= @one_bobparty.bobparty_firstmember_name %>" readonly>
                       <textarea name="bobparty_comment"  id="output" class="inputUserIcon" style="position:static" readonly><%= @one_bobparty.bobparty_comment %></textarea>
-                      <textarea name="bobparty_nowstate" class="inputUserIcon" style="position:static" readonly> 
+                      <textarea name="bobparty_nowstate" class="inputUserIcon" style="position:static" readonly>
                       <% if @one_bobparty.bobparty_firstmember_name != nil %>
                       <%= @one_bobparty.bobparty_firstmember_name %>
                       <% end %>
@@ -49,7 +49,7 @@
                       <% end %>
                       </textarea>
                       <input type="hidden" name="bobparty_username" value="<%= current_user.name %>">
-                      <input type="hidden" name="id" value="<%= params[:id] %>">  
+                      <input type="hidden" name="id" value="<%= params[:id] %>">
                       <% if @one_bobparty.bobparty_firstmember_email == current_user.email %>
                           <input type='submit' value='Correct' name='submit' style="width:30%" class="submit">
                       <% else %>
@@ -59,7 +59,7 @@
             <% end %>
           <% else %>
                         <!-- 채팅방 달기이이이  -->
-                     <script id="talklink_function" src="http://talklink.link/plugin-blog-all.js" talklink_keyword="hello" talklink_align="right"></script>
+                     <%= render partial: "/main/bobparty_read_chat", object: @one_bobparty %>
           <% end %>
       </div>
       <br/>

@@ -5,7 +5,7 @@
     <title>Tobob/bobparty_write</title>
     <%= stylesheet_link_tag "report_write" %>
     <script>
-        function eraseText() 
+        function eraseText()
         {
             document.getElementById("output").value = "";
         }
@@ -14,15 +14,15 @@
         }).focusout(function(){
           $(".inputUserIcon").css("color", "white");
         });
-        
+
         $(".pass").focusin(function(){
           $(".inputPassIcon").css("color", "#e74c3c");
         }).focusout(function(){
           $(".inputPassIcon").css("color", "white");
         });
-        
+
         function updateTextInput(val) {
-          document.getElementById('textInput').value="최대: "+val+"명"; 
+          document.getElementById('textInput').value="최대: "+val+"명";
         }
     </script>
   </head>
